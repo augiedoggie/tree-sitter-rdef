@@ -1,0 +1,49 @@
+=======
+Archive
+=======
+
+resource(24) #'BBMP' archive BBitmap
+{
+	"_frame" = rect { 0.0, 0.0, 63.0, 31.0 },
+	"_cspace" = 8200,
+	"_bmflags" = 1,
+	"_rowbytes" = 256,
+	"_data" = array
+	{
+		/* here goes the bitmap data */
+	}
+};
+
+---
+
+(source_file
+	(resource
+		(params
+			(number))
+		(typecode)
+		(archive
+			(identifier)
+			(block
+				(statement
+					(string)
+					(heavy
+						(heavy_builtin)
+						(block
+							(number)
+							(number)
+							(number)
+							(number))))
+				(statement
+					(string)
+					(number))
+				(statement
+					(string)
+					(number))
+				(statement
+					(string)
+					(number))
+				(statement
+					(string)
+					(array
+						(block
+							(comment))))))))

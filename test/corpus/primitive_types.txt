@@ -1,0 +1,116 @@
+======================
+Primitive Types: basic
+======================
+
+resource "default";
+resource() false;
+resource(1) true;
+resource(2) 123;
+resource(3) 3.14;
+resource(4) "hello world";
+resource(5) $"0123456789ABCDEF";
+resource(13, "Friday") "Bad Luck";
+
+---
+
+(source_file
+	(resource
+		(string))
+
+	(resource
+		(params)
+		(constant))
+
+	(resource
+		(params
+			(number))
+		(constant))
+
+	(resource
+		(params
+			(number))
+		(number))
+
+	(resource
+		(params
+			(number))
+		(number))
+
+	(resource
+		(params
+			(number))
+		(string))
+
+	(resource
+		(params
+			(number))
+		(hex_string))
+	(resource
+		(params
+			(number)
+			(string))
+		(string)))
+
+====================================
+Primitive Types: typecodes/typecasts
+====================================
+
+resource(6) (int8) 123;
+resource(7) (double) 3.14;
+resource(8) #'dude' 123;
+resource(9) #200 123;
+resource(10) #0xC8 123;
+resource(11) #'dude' (int8) 123;
+
+---
+
+(source_file
+	(resource
+		(params
+			(number))
+		(typecast)
+		(number))
+
+	(resource
+		(params
+			(number))
+		(typecast)
+		(number))
+
+	(resource
+		(params
+			(number))
+		(typecode)
+		(number))
+
+	(resource
+		(params
+			(number))
+		(typecode)
+		(number))
+
+	(resource
+		(params
+			(number))
+		(typecode)
+		(number))
+
+	(resource
+		(params
+			(number))
+		(typecode)
+		(typecast)
+		(number)))
+
+=====================================
+Primitive Types: unsupported features
+=====================================
+
+//resource(11) (#'dude') (int8) 123; parens around typecode
+//resource(14) 2 * (4 + 3); ugh, rc supports math expressions!
+
+---
+
+(source_file
+	(comment)
+	(comment))

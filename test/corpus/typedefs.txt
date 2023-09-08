@@ -1,0 +1,199 @@
+===============
+Typedefs: heavy
+===============
+
+type #'menu' menu
+{
+	string name,
+	int32 count,  // how many items
+	array items   // the menu items
+};
+
+type #'item' menuitem
+{
+	string name,
+	message msg,
+	bool enabled = true  // default value is "true"
+};
+
+---
+
+(source_file
+	(typedef
+		(typecode)
+		(identifier)
+		(block
+			(typecast)
+			(identifier)
+			(typecast)
+			(identifier)
+			(comment)
+			(typecast)
+			(identifier)
+			(comment)))
+
+	(typedef
+		(typecode)
+		(identifier)
+		(block
+			(typecast)
+			(identifier)
+			(typecast)
+			(identifier)
+			(typecast)
+			(identifier)
+			(constant)
+			(comment))))
+
+==============================
+Typedefs: heavy types resource
+==============================
+
+resource(27) menu
+{
+	name = "File",
+	count = 3,
+	items = array
+	{
+	   menuitem { "New...",   message('fnew') },
+	   menuitem { "Print...", message('fprt'), false },
+	   menuitem { "Exit",     message('_QRQ') }
+	}
+};
+
+---
+
+(source_file
+	(resource
+		(params
+			(number))
+		(identifier)
+		(block
+			(identifier)
+			(string)
+			(identifier)
+			(number)
+			(identifier)
+			(array
+				(block
+					(identifier)
+					(block
+						(string)
+						(message
+							(params
+								(what))))
+					(identifier)
+					(block
+						(string)
+						(message
+							(params
+								(what)))
+						(constant))
+					(identifier)
+					(block
+						(string)
+						(message
+							(params
+								(what)))))))))
+
+=========================================
+Typedefs: default values and named params
+=========================================
+
+type vector { int32 x, int32 y, int32 z, int32 w = 4 };
+resource(1) vector { 1, 3, x = 2 };
+
+---
+
+(source_file
+	(typedef
+		(identifier)
+			(block
+				(typecast)
+				(identifier)
+				(typecast)
+				(identifier)
+				(typecast)
+				(identifier)
+				(typecast)
+				(identifier)
+				(number)))
+
+	(resource
+		(params
+			(number))
+		(identifier)
+		(block
+			(number)
+			(number)
+			(identifier)
+			(number))))
+
+========================
+Typedefs: named resource
+========================
+
+type myint { int32 i };
+resource(10, "MyName") myint { 123 };
+
+---
+
+(source_file
+	(typedef
+		(identifier)
+			(block
+				(typecast)
+				(identifier)))
+
+	(resource
+		(params
+			(number)
+			(string))
+		(identifier)
+			(block
+				(number))))
+
+================
+Typedefs: params
+================
+
+type(10, "MyName") myint { int32 i };
+resource myint { 123 };
+resource myint 123;
+
+---
+
+(source_file
+	(typedef
+		(params
+			(number)
+			(string))
+		(identifier)
+		(block
+			(typecast)
+			(identifier)))
+
+	(resource
+		(identifier)
+		(block
+			(number)))
+
+	(resource
+		(identifier)
+			(number)))
+
+====================
+Typedefs: fixed size
+====================
+
+type fixed { string s[64] };
+
+---
+
+(source_file
+	(typedef
+		(identifier)
+		(block
+			(typecast)
+			(identifier)
+			size: (number))))

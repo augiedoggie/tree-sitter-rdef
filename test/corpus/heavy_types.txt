@@ -1,0 +1,114 @@
+======================
+Heavy Types: rgb_color
+======================
+
+resource(25) rgb_color { 255, 128, 0, 0 };
+resource(26) rgb_color
+{
+	blue = 0, green = 128, alpha = 0, red = 255
+};
+
+---
+
+(source_file
+	(resource
+		(params
+			(number))
+		(heavy
+			(heavy_builtin)
+			(block
+				(number)
+				(number)
+				(number)
+				(number))))
+
+	(resource
+		(params
+			(number))
+		(heavy
+			(heavy_builtin)
+			(block
+				(identifier)
+				(number)
+				(identifier)
+				(number)
+				(identifier)
+				(number)
+				(identifier)
+				(number)))))
+
+=================
+Heavy Types: rect
+=================
+
+resource(27) rect { 0.0, 0.0, 63.0, 31.0 };
+resource(28) rect
+{
+	left = 0.0, top = 0.0, right = 63.0, bottom = 31.0
+};
+
+---
+
+(source_file
+	(resource
+		(params
+			(number))
+		(heavy
+			(heavy_builtin)
+			(block
+				(number)
+				(number)
+				(number)
+				(number))))
+
+
+	(resource
+		(params
+			(number))
+		(heavy
+			(heavy_builtin)
+			(block
+				(identifier)
+				(number)
+				(identifier)
+				(number)
+				(identifier)
+				(number)
+				(identifier)
+				(number)))))
+
+==================
+Heavy Types: point
+==================
+
+resource(29) point { 42.0, 42.0 };
+resource(30) point
+{
+	x = 42.0, y = 42.0
+};
+
+---
+
+(source_file
+	(resource
+		(params
+			(number))
+		(heavy
+			(heavy_builtin)
+			(block
+				(number)
+				(number))))
+
+
+	(resource
+		(params
+			(number))
+		(heavy
+			(heavy_builtin)
+			(block
+				(identifier)
+				(number)
+				(identifier)
+				(number))))
+
+)

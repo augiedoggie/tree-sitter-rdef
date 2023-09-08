@@ -1,0 +1,46 @@
+===================
+String Continuation
+===================
+
+resource app_version {
+	major  = 1,
+	middle = 0,
+	minor  = 0,
+
+	variety = B_APPV_BETA,
+	internal = 0,
+
+	short_info = "Test Short Info",
+	long_info = "Test Long Info\n"
+			"This is more text\n"
+			"... and the final info."
+};
+
+---
+
+(source_file
+	(resource
+		(builtin
+			(identifier)
+			(block
+				(statement
+					(identifier)
+					(number))
+				(statement
+					(identifier)
+					(number))
+				(statement
+					(identifier)
+					(number))
+				(statement
+					(identifier)
+					(constant))
+				(statement
+					(identifier)
+					(number))
+				(statement
+					(identifier)
+					(string))
+				(statement
+					(identifier)
+					(string))))))

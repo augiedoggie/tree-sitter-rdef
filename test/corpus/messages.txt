@@ -1,0 +1,165 @@
+===============
+Messages: basic
+===============
+
+resource(42) message {
+	"foo" = 5,
+	"bar" = "baz",
+	"bah" = 4.20,
+	"doh" = $"aabbccdd"
+};
+
+---
+
+(source_file
+	(resource
+		(params
+			(number))
+		(message
+			(block
+				(statement
+					(string)
+					(number))
+				(statement
+					(string)
+					(string))
+				(statement
+					(string)
+					(number))
+				(statement
+					(string)
+					(hex_string))))))
+
+================
+Messages: nested
+================
+
+resource(22) message('blah')
+{
+	"Name" = "Bob Marley",
+	"Number" = 3.14,
+	"Array" = array { "a", "nested", "array" },
+	"Other Msg" = message { "field" = "value" }
+};
+
+---
+
+(source_file
+	(resource
+		(params
+			(number))
+		(message
+			(params
+				(what))
+			(block
+				(statement
+					(string)
+					(string))
+				(statement
+					(string)
+					(number))
+				(statement
+					(string)
+					(array
+						(block
+							(string)
+							(string)
+							(string))))
+				(statement
+					(string)
+					(message
+						(block
+							(statement
+								(string)
+								(string)))))))))
+
+==================================
+Messages: typecodes/typecasts
+==================================
+
+resource(23) message('bla2')
+{
+	"integer1" = (int8) 123,             // use cast to change data type
+	int16 "integer2" = 12345,            // specify data type
+	#'dude' "buffer1" = $"aabbccdd",     // specify a new type code
+	#'dude' raw "buffer2" = $"aabbccdd"  // you can also combine them
+};
+
+---
+
+(source_file
+	(resource
+		(params
+			(number))
+		(message
+			(params
+				(what))
+			(block
+				(statement
+					(string)
+					(typecast)
+					(number))
+				(comment)
+				(statement
+					(typecast)
+					(string)
+					(number))
+				(comment)
+				(statement
+					(typecode)
+					(string)
+					(hex_string))
+				(comment)
+				(statement
+					(typecode)
+					(typecast)
+					(string)
+					(hex_string))
+				(comment)))))
+
+=======================
+Messages: deeply nested
+=======================
+
+resource(43, "ArchiverMetaData") message {
+	"ArchiverName" = "tar",
+	"FileTypes" = message {
+		"application/tar" = message {
+			"Extension" = ".tar"
+		},
+		"application/x-tar" = message {
+			"Extension" = ".tar"
+		}
+	}
+};
+
+---
+
+(source_file
+	(resource
+		(params
+			(number)
+			(string))
+		(message
+			(block
+				(statement
+					(string)
+					(string))
+				(statement
+					(string)
+					(message
+						(block
+							(statement
+								(string)
+								(message
+									(block
+										(statement
+											(string)
+											(string)))))
+							(statement
+								(string)
+								(message
+									(block
+										(statement
+											(string)
+											(string))))))))))))

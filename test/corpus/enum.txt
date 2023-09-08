@@ -1,0 +1,27 @@
+====
+Enum
+====
+
+enum
+{
+	R_AppName = 1,
+	R_SomeOtherThing = 2
+};
+
+resource(R_AppName) "MyKillerApp";
+
+---
+
+(source_file
+	(enum
+		(block
+			(statement
+				(identifier)
+				(number))
+			(statement
+				(identifier)
+				(number))))
+	(resource
+		(params
+			(identifier))
+			(string)))

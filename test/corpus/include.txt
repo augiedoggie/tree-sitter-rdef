@@ -1,0 +1,11 @@
+=======
+Include
+=======
+
+#include "myresources.h"
+
+---
+
+(source_file
+	(include
+		(string)))
